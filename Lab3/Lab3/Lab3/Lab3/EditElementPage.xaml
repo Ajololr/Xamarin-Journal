@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:lab3="clr-namespace:Lab3"
+             x:Class="Lab3.EditElementPage"
+             xmlns:helpers="clr-namespace:Lab3.Helpers" xmlns:mm="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms"
+             Background="{AppThemeBinding Dark=Black, Light=White}">
+    
+    <ContentPage.BindingContext>
+        <lab3:ElementViewModel />
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <StackLayout BindingContext="{Binding SelectedStudent}" Padding="24, 0">
+
+            <Entry x:Name="FirstNameEntry" Text="{Binding FirstName}" Placeholder="{helpers:Translate FirstName}"
+               BackgroundColor="{AppThemeBinding Dark=Black, Light=White}"
+               PlaceholderColor="{AppThemeBinding Dark=White, Light=Black}"
+               TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+
+            <Entry x:Name="SecondNameEntry" Text="{Binding SecondName}" Placeholder="{helpers:Translate SecondName}"
+               BackgroundColor="{AppThemeBinding Dark=Black, Light=White}"
+               PlaceholderColor="{AppThemeBinding Dark=White, Light=Black}"
+               TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+
+            <Entry x:Name="LastNameEntry" Text="{Binding LastName}" Placeholder="{helpers:Translate LastName}"
+               BackgroundColor="{AppThemeBinding Dark=Black, Light=White}"
+               PlaceholderColor="{AppThemeBinding Dark=White, Light=Black}"
+               TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+
+            <DatePicker Date="{Binding Birthday}" x:Name="birthdayPicker"
+                    MaximumDate="01/01/2021"
+                    Format="D" />
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+
+                <Entry x:Name="LatitudeEntry" Text="{Binding Latitude}" Placeholder="{helpers:Translate Latitude}" WidthRequest="200"
+                   BackgroundColor="{AppThemeBinding Dark=Black, Light=White}"
+                   PlaceholderColor="{AppThemeBinding Dark=White, Light=Black}"
+                   TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+
+                <Entry x:Name="LongitudeEntry" Text="{Binding Longitude}" Placeholder="{helpers:Translate Longitude}" WidthRequest="200"
+                   BackgroundColor="{AppThemeBinding Dark=Black, Light=White}"
+                   PlaceholderColor="{AppThemeBinding Dark=White, Light=Black}"
+                   TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+
+            </StackLayout>
+
+            <mm:VideoView x:Name="VideoView" HorizontalOptions="FillAndExpand" AutoPlay="False" HeightRequest="200" ShowControls="True"/>
+
+            <FlexLayout JustifyContent="SpaceBetween" Margin="0, 10">
+                <Button Text="{helpers:Translate AddVideo}" Clicked="Button_Video_Clicked" 
+                    BackgroundColor="{DynamicResource Key=Color}"/>
+
+                <Button Text="{helpers:Translate Gallery}" HorizontalOptions="End" Clicked="Button_Clicked_Gallery"
+                BackgroundColor="{DynamicResource Key=Color}"/>
+
+                <Button Text="{helpers:Translate AddImage}" Clicked="Button_Image_Clicked" 
+                    BackgroundColor="{DynamicResource Key=Color}"/>
+
+
+            </FlexLayout>
+
+
+            <Button WidthRequest="150" Text="{helpers:Translate Save}" Clicked="Button_Save_Clicked"
+                VerticalOptions="End" HorizontalOptions="Center" 
+                BackgroundColor="{DynamicResource Key=Color}"/>
+        </StackLayout>
+        <Label HorizontalTextAlignment="Center" Text="{Binding  ErrorMessage}" TextColor="Red"/>
+        <Label HorizontalTextAlignment="Center" Text="{Binding SuccessMessage}" TextColor="Green"/>
+    </StackLayout>
+</ContentPage>

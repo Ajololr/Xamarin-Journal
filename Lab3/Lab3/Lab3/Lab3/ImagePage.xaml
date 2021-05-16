@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:lab3="clr-namespace:Lab3"
+             x:Class="Lab3.ImagePage"
+             Background="{AppThemeBinding Dark=Black, Light=White}">
+    <ContentPage.BindingContext>
+        <lab3:ElementViewModel />
+    </ContentPage.BindingContext>
+
+    <CarouselView x:Name="Carousel" CurrentItem="{Binding CurrentImage}" ItemsSource="{Binding ImageList}">
+        <CarouselView.ItemTemplate>
+            <DataTemplate>
+                <Image WidthRequest="400" HeightRequest="320" Source="{Binding .}"/>
+            </DataTemplate>
+        </CarouselView.ItemTemplate>
+    </CarouselView>
+</ContentPage>

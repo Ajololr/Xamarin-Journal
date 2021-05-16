@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:colorpicker="clr-namespace:ColorPicker;assembly=ColorPicker"
+             xmlns:helpers="clr-namespace:Lab3.Helpers"
+             x:Class="Lab3.SettingsPage"
+
+             NavigationPage.HasNavigationBar="False"
+             Background="{AppThemeBinding Dark=Black, Light=White}"
+             Title="Options">
+    <ContentPage.Content>
+        <StackLayout Padding="24">
+            <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                <StackLayout Orientation="Horizontal">
+                    <Label  Text="{helpers:Translate FontSize}" 
+                       TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                       FontSize="{DynamicResource Key=FontSize}"/>
+
+                    <Label WidthRequest="50" TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                       FontSize="{DynamicResource Key=FontSize}" Text="{DynamicResource Key=FontSize}"/>
+                </StackLayout>
+
+                <Slider x:Name="FontSizeSlider"
+                        WidthRequest="200" Maximum="20" Minimum="14"
+                        MinimumTrackColor="Gold" MaximumTrackColor="Gray"
+                        ThumbColor="{DynamicResource Key=Color}"
+                        ValueChanged="Slider_ValueChanged"/>
+            </FlexLayout>
+
+            <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                <Label WidthRequest="200" Text="{helpers:Translate DarkMode}"
+                       TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                       FontSize="{DynamicResource Key=FontSize}"/>
+
+                <Switch x:Name="ModeSwitch" Toggled="Switch_Toggled" ThumbColor="{DynamicResource Key=Color}"/>
+            </FlexLayout>
+
+            <Picker x:Name="LanguagePicker" SelectedIndexChanged="Picker_SelectedIndexChanged"
+                    TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                    Margin="10">
+                <Picker.Items>
+                    <x:String>English</x:String>
+                    <x:String>Русский</x:String>
+                </Picker.Items>
+            </Picker>
+            <colorpicker:ColorTriangle SelectedColor="{DynamicResource Key=Color}"  x:Name="ColorPicker"
+                                     HeightRequest="200"
+                                     WidthRequest="200" 
+                                     PropertyChanged="ColorPicker_PropertyChanged"/>
+
+            <Button Text="{helpers:Translate SignOut}" Margin="10" 
+                    HorizontalOptions="Center" WidthRequest="200" Clicked="Button_Sign_Out_Clicked"
+                    BackgroundColor="{DynamicResource Key=Color}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

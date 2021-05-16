@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Lab3" x:DataType="local:TabBarPage"
+            x:Class="Lab3.TabBarPage" 
+            NavigationPage.HasNavigationBar="False"
+            xmlns:helpers="clr-namespace:Lab3.Helpers"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.BarItemColor="{DynamicResource Key=Color}"
+            android:TabbedPage.BarSelectedItemColor="{AppThemeBinding Dark=White, Light=Black}"
+            BarBackgroundColor="{AppThemeBinding Dark=Black, Light=White}">
+
+    <NavigationPage Title="{helpers:Translate Group}" IconImageSource="collection.png" >
+        <x:Arguments>
+            <local:CollectionPage/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="{helpers:Translate Map}" IconImageSource="map.png">
+        <x:Arguments>
+            <local:MapPage />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="{helpers:Translate Settings}" IconImageSource="settings.png">
+        <x:Arguments>
+            <local:SettingsPage />
+        </x:Arguments>
+    </NavigationPage>
+</TabbedPage>

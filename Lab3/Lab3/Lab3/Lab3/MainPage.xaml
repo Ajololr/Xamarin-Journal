@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab3.MainPage"
+             xmlns:helpers="clr-namespace:Lab3.Helpers"
+             Title="{helpers:Translate SignIn}"
+             NavigationPage.HasBackButton="False"
+             Background="{AppThemeBinding Dark=Black, Light=White}">
+
+    <FlexLayout Direction="Column" JustifyContent="SpaceBetween" Padding="24,24,24,24">
+        <Label Text="{helpers:Translate SignIn}" HorizontalTextAlignment="Center" FontSize="36"
+               TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+        <StackLayout>
+            <Label Text="{helpers:Translate Email}" x:Name="signInEmailLabel" HorizontalTextAlignment="Start"
+               TextColor="{AppThemeBinding Dark=White, Light=Black}"
+               FontSize="{DynamicResource Key=FontSize}"/>
+
+            <Entry x:Name="signInEmailEntry"
+               BackgroundColor="{AppThemeBinding Dark=Black, Light=White}"
+               PlaceholderColor="{AppThemeBinding Dark=White, Light=Black}"
+               TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+
+            <Label Text="{helpers:Translate Password}" x:Name="signInPasswordLabel" HorizontalTextAlignment="Start"
+               TextColor="{AppThemeBinding Dark=White, Light=Black}"
+               FontSize="{DynamicResource Key=FontSize}"/>
+
+            <Entry x:Name="signInPasswordEntry" IsPassword="True"
+               BackgroundColor="{AppThemeBinding Dark=Black, Light=White}"
+               PlaceholderColor="{AppThemeBinding Dark=White, Light=Black}"
+               TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+
+            <Button Text="{helpers:Translate Login}" Clicked="Button_Sign_In_Clicked"
+                BackgroundColor="{DynamicResource Key=Color}"/>
+        </StackLayout>
+
+        <Button Margin="0,200,0,0" Text="{helpers:Translate SignUp}" Clicked="Button_Sign_Up_Clicked"
+                BackgroundColor="{DynamicResource Key=Color}"/>
+        
+    </FlexLayout>
+
+</ContentPage>

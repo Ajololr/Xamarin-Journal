@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:lab3="clr-namespace:Lab3" xmlns:mm="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms"
+             x:Class="Lab3.ElementPage"
+             xmlns:helpers="clr-namespace:Lab3.Helpers"
+             Title="{Binding SelectedStudent.LastName}"
+             Background="{AppThemeBinding Dark=Black, Light=White}">
+    <ContentPage.BindingContext>
+        <lab3:ElementViewModel />
+    </ContentPage.BindingContext>
+    <StackLayout>
+
+        <Button Text="{helpers:Translate Edit}" HorizontalOptions="End"
+                BackgroundColor="{DynamicResource Key=Color}"/>
+
+        <mm:VideoView x:Name="VideoView" HorizontalOptions="FillAndExpand" AutoPlay="False" HeightRequest="200" ShowControls="True"/>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <StackLayout Orientation="Horizontal" WidthRequest="200">
+                <Label Text="{helpers:Translate FirstName}"
+                       TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                       FontSize="{DynamicResource Key=FontSize}"/>
+                
+                <Label Text="{Binding SelectedStudent.FirstName}" 
+                       TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                       FontSize="{DynamicResource Key=FontSize}"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" WidthRequest="200">
+                <Label Text="{helpers:Translate LastName}"
+                       TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                       FontSize="{DynamicResource Key=FontSize}"/>
+
+                <Label Text="{Binding SelectedStudent.LastName}"
+                       TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                       FontSize="{DynamicResource Key=FontSize}"/>
+                
+            </StackLayout>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <StackLayout Orientation="Horizontal" WidthRequest="200">
+                <Label Text="{helpers:Translate SecondName}"
+                       TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                       FontSize="{DynamicResource Key=FontSize}"/>
+
+                <Label Text="{Binding SelectedStudent.SecondName}"
+                       TextColor="{AppThemeBinding Dark=White, Light=Black}"
+                       FontSize="{DynamicResource Key=FontSize}"/>
+
+            </StackLayout>
+        </StackLayout>
+
+        <Button Text="{helpers:Translate ViewAll}" HorizontalOptions="End" Clicked="Button_Clicked_View_All"
+                BackgroundColor="{DynamicResource Key=Color}"/>
+
+        <CollectionView x:Name="ImagesView" ItemsSource="{Binding ImageList}" HeightRequest="120">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="5" HorizontalItemSpacing="1" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding .}" Aspect="AspectFill" Margin="0,0,0,10" HeightRequest="50"
+                                   WidthRequest="70">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="{Binding .}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

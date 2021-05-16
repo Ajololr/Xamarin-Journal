@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:Lab3.Helpers" 
+             xmlns:lab3="clr-namespace:Lab3"
+             x:Class="Lab3.SignUpPage"
+             Background="{AppThemeBinding Dark=Black, Light=White}">
+    <ContentPage.BindingContext>
+        <lab3:SignUpViewModel />
+    </ContentPage.BindingContext>
+
+    <FlexLayout Direction="Column" Padding="24" AlignItems="Center" JustifyContent="SpaceBetween">
+        <Frame CornerRadius="15" Padding="0">
+            <Image HeightRequest="130" WidthRequest="130" Aspect="AspectFill" Source="{Binding SelectedImage.FullPath}" BackgroundColor="{DynamicResource Key=Color}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Image_Tapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </Frame>
+        <StackLayout MinimumWidthRequest="350">
+            <Entry  WidthRequest="350" Margin="0,20,0,0"  x:Name="signUpEmailEntry" Placeholder="{helpers:Translate Email}"
+                   BackgroundColor="{AppThemeBinding Dark=Black, Light=White}"
+                   PlaceholderColor="{AppThemeBinding Dark=White, Light=Black}"
+                   TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+
+        <Entry x:Name="signUpPasswordEntry" Placeholder="{helpers:Translate Password}" IsPassword="True"
+               BackgroundColor="{AppThemeBinding Dark=Black, Light=White}"
+                   PlaceholderColor="{AppThemeBinding Dark=White, Light=Black}"
+                   TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+
+        <Entry x:Name="signUpFirstName" Placeholder="{helpers:Translate FirstName}"
+               BackgroundColor="{AppThemeBinding Dark=Black, Light=White}"
+                   PlaceholderColor="{AppThemeBinding Dark=White, Light=Black}"
+                   TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+
+        <Entry x:Name="signUplastName" Placeholder="{helpers:Translate LastName}"
+               BackgroundColor="{AppThemeBinding Dark=Black, Light=White}"
+                   PlaceholderColor="{AppThemeBinding Dark=White, Light=Black}"
+                   TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+
+        <Entry x:Name="sugnUpSecondName" Placeholder="{helpers:Translate SecondName}"
+               BackgroundColor="{AppThemeBinding Dark=Black, Light=White}"
+                   PlaceholderColor="{AppThemeBinding Dark=White, Light=Black}"
+                   TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+
+            <DatePicker x:Name="birthdayPicker"
+                    MaximumDate="01/01/2021"
+                    Format="D" />
+
+        </StackLayout>
+        <Label Text="{Binding ErrorMessage}" TextColor="Red"/>
+        <Label Text="{Binding SuccessMessage}" TextColor="Green"/>
+        <Button VerticalOptions="End" Text="{helpers:Translate SignUp}" Clicked="Button_Sign_Up_Clicked"
+                BackgroundColor="{DynamicResource Key=Color}"/>
+    </FlexLayout>
+</ContentPage>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:Lab3"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             x:Class="Lab3.MapPage"
+             NavigationPage.HasNavigationBar="False"
+             Background="{AppThemeBinding Dark=Black, Light=White}">
+    <ContentPage.BindingContext>
+        <vm:CollectionViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <maps:Map ItemsSource="{Binding Students}">
+                <x:Arguments>
+                    <maps:MapSpan>
+                        <x:Arguments>
+                            <maps:Position>
+                                <x:Arguments>
+                                    <x:Double>53.9006</x:Double>
+                                    <x:Double>27.5590</x:Double>
+                                </x:Arguments>
+                            </maps:Position>
+                            <x:Double>4</x:Double>
+                            <x:Double>10</x:Double>
+                        </x:Arguments>
+                    </maps:MapSpan>
+                </x:Arguments>
+                <maps:Map.ItemTemplate>
+                    <DataTemplate>
+                        <maps:Pin ClassId="{Binding Id}" Label="{Binding FirstName}" Position="{Binding Position}" InfoWindowClicked="Pin_InfoWindowClicked"/>
+                    </DataTemplate>
+                </maps:Map.ItemTemplate>
+            </maps:Map>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
